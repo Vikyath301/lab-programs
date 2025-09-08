@@ -1,72 +1,69 @@
-package Stack4;
+package person;
 
 public class Stack {
-	private int arr[];
-	private int top;
-	private int capacity;
-	Stack(int size){
-		capacity = size; 
-	    arr = new int[capacity]; 
-	    top = -1; 
+	  private Person arr[];
+	  private int top;
+	  private int capacity;
 
+	 Stack(int size) {
+		 this.top=-1;
+		 this.capacity=size;
+		 this.arr=new Person[this.capacity];
 	}
-	Stack(int[] inputArr) { 
-        capacity = inputArr.length; 
-        arr = new int[capacity]; 
-        for (int i = 0; i < capacity; i++) { 
-            arr[i] = inputArr[i]; 
-        } 
-        top = capacity - 1; 
-    } 
-	 void push(int x) { 
-	      if (top >= capacity - 1) { 
-	         System.out.println("Stack Overflow" + x); 
-	        } 
-	        arr[++top] = x; 
-	        System.out.println("Pushed: " + x); 
-	    } 
-	 void push(int x, int y) { 
-	        push(x); 
-	        push(y); 
-	    } 
-	 int pop() { 
-	      if (top == -1) { 
-	          System.out.println("Stack Underflow"); 
-	          return -1; 
-	        } 
-	        return arr[top--]; 
-	    } 
-	  void pop(int n) { 
-	      if (n <= 0) { 
-	         System.out.println("Invalid number of elements to pop"); 
-	         return; 
-	        } 
-	      for (int i = 0; i < n; i++) { 
-	            int val = pop(); 
-	            if (val == -1) break; 
-	            System.out.println("Popped: " + val); 
-	        } 
-	    }
-	  void display() { 
-	        if (top == -1) { 
-	            System.out.println("Stack is empty");  
-	        } 
-	        System.out.println("Stack contents (Top to Bottom):"); 
-	        for (int i = top; i >= 0; i--) { 
-	            System.out.println(arr[i]); 
-	        } 
-	    }
-	  void display(int n) { 
-	        if (top==-1) { 
-	            System.out.println("Stack is empty"); 
-	        } 
-	        System.out.println("Top " + n + " elements:"); 
-	        for (int i = top; i >= 0 && i > top - n; i--) { 
-	            System.out.println(arr[i]); 
-	        } 
-	    } 
-	  
-	} 
+	Stack(Person[] inputarr) {
+		this.capacity=inputarr.length;
+		this.arr = new Person[capacity];
+		for (int i= 0;i<inputarr.length;i++) {
+            this.arr[i] = inputarr[i];
+        }
+		this.top=inputarr.length-1;
+	 }
+	void push(Person p) {
+		if(top==arr.length-1) {
+			System.out.println("stack overflow");
+		}
+		else {
+			arr[++top]=p;
+		}
+	}
+	void push(Person p1,Person p2) {
+		 push(p1);
+	     push(p2);
+	}
+	Person pop() {
+		if(top==-1) {
+			System.out.println("stack is empty");
+			return null;
+		}
+		else {
+			return arr[top--];
+		}
+	}
+	void pop(int n) {
+		if(top==-1) {
+		System.out.println("Stack is empty");
+        return ;
+		}
+		for(int i=0;i<n;i++) {
+			pop();
+		}
+	}
+	void display() {
+		if(top==-1) {
+			System.out.println("stack is empty");
+		}
+		for(int i=top;i>=0;i--) {
+			arr[i].display_person();
+		}
+    }
+	void display(int n) {
+		if(top==-1) {
+			System.out.println("stack is empty");
+		}
+		for (int i = top; i >= top - n + 1; i--) {
+            arr[i].display_person();
+        }
+	}
+	
 
-
-		
+}
