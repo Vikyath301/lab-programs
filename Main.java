@@ -1,18 +1,15 @@
-package lab7;
+package lab8;
 
 public class Main {
-	public static void main(String[] args) {
-		MessageBoard board=new MessageBoard();
-		Producer producer=new Producer(board);
-	    Consumer consumer=new Consumer(board);
-	    Thread producerThread=new Thread(producer);
-	    Thread consumerThread=new Thread(consumer);
-	    producerThread.start();
-		consumerThread.start();
-		} 
-		
+	 public static void main(String[] args) {
+		 Bank bank = new Bank();
+	     bank.createAccount(1001, 5000);
+	     bank.createAccount(1002, 2000);
+	     bank.deposit(1001, 1000);
+	     bank.withdraw(1002, 500);
+	     System.out.println("Final balances:");
+	     bank.checkbalance(1001);
+	     bank.checkbalance(1002);
 
-
-	}
-
-
+}
+}
